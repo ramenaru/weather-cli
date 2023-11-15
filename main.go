@@ -14,10 +14,24 @@ type Weather struct {
 	} `json:"location"`
 
 	Current struct {
-		Name    string `json:"name"`
-		Country string `json:"country"`
-		Region  string `json:"region"`
+		TempC     float64 `json:"temp_c"`
+		Condition struct {
+			Text string `json:"text"`
+		} `json:"condition"`
 	} `json:"current"`
+
+	Forecast struct {
+		Forecastday []struct {
+			Hour []struct {
+				TimeEpoch int64   `json:"time_epoch"`
+				TempC     float64 `json:"time_c"`
+				Condition struct {
+					Text string `json:"text"`
+				} `json:"condition"`
+				ChanceOfRain float64 `json:"chance_of_rain"`
+			} `json:"hour"`
+		} `json:"forecast"`
+	} `json:"forecast"`
 }
 
 func main() {
