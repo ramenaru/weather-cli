@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/fatih/color"
@@ -39,9 +40,13 @@ type Weather struct {
 
 func main() {
 
-	q:= "bandung"
-	 
-	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=9fffb20495d14590a7761327231511&q="+ q +"&days=current&aqi=no&alerts=no")
+	q := "bandung"
+
+	if len(os.Args) >= 2 {
+		q = os.Args[1]
+	}
+
+	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=9fffb20495d14590a7761327231511&q=" + q + "&days=current&aqi=no&alerts=no")
 
 	if err != nil {
 		panic(err)
