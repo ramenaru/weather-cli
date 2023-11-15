@@ -24,7 +24,7 @@ Here is an example weather report:
 ### Dependency
 - Go 
 - Git
-- Bash
+- Bash, or etc.
 
 ### Install dependencies
 ```bash
